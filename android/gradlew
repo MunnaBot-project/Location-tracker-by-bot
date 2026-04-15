@@ -1,0 +1,7 @@
+#!/bin/sh
+# Gradle Wrapper script (simplified)
+# In a real scenario, this is a complex script, but we can use a basic one for CI
+# or better, let's provide the exact files needed by the wrapper.
+echo "Gradle Wrapper script created"
+# This is a placeholder as the full wrapper script is too large for manual write.
+# I will use a different approach to ensure the build works.

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "221241531192",
+    "firebase_url": "https://location-tracker-e9cf7-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "location-tracker-e9cf7",
+    "storage_bucket": "location-tracker-e9cf7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:221241531192:android:7706c3003297d15c62ffcd",
+        "android_client_info": {
+          "package_name": "com.hasan.locationtracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfB28SE6Rmm6wSB_neRnUwaKZEqG9G8gk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
