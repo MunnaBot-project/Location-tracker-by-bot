@@ -21,20 +21,21 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@v3
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
 
     - name: Build Debug APK
       run: |
         cd android
-        gradle assembleDebug --no-daemon --stacktrace
+        chmod +x gradlew || true
+        ./gradlew assembleDebug --stacktrace || gradle assembleDebug --stacktrace
 
     - name: Locate APK
       id: locate_apk
       run: |
         APK_PATH=$(find . -name "*.apk" -path "*/debug/*" | head -n 1)
         if [ -z "$APK_PATH" ]; then
-          echo "❌ APK NOT FOUND — listing all apk files:"
+          echo "❌ APK NOT FOUND"
           find . -name "*.apk" || true
           exit 1
         fi
@@ -47,14 +48,11 @@ jobs:
         name: location-tracker-debug
         path: ${{ env.APK_PATH }}
 
-    - name: Create GitHub Release and Upload APK
+    - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: v1.0.${{ github.run_number }}
         name: "Location Tracker v1.0.${{ github.run_number }}"
-        body: |
-          ## 📍 Location Tracker APK
-          Auto-built from commit ${{ github.sha }}
         draft: false
         prerelease: false
         files: ${{ env.APK_PATH }}
