@@ -24,11 +24,14 @@ jobs:
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
 
+    - name: Generate Gradle Wrapper
+      uses: gradle/wrapper-validation-action@v2
+
     - name: Build Debug APK
+      working-directory: ./android
       run: |
-        cd android
-        chmod +x gradlew || true
-        ./gradlew assembleDebug --stacktrace || gradle assembleDebug --stacktrace
+        chmod +x gradlew
+        ./gradlew assembleDebug --stacktrace
 
     - name: Locate APK
       id: locate_apk
